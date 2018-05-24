@@ -1,8 +1,13 @@
 package koncert;
 
+import java.io.FileInputStream;
+
+import javazoom.jl.player.Player;
+
 public class Synch {
 	
 	private int promena;
+	private int refren=0;
 	
 	
 	
@@ -21,13 +26,20 @@ public class Synch {
 				e.printStackTrace();
 			}
 		}
-			System.out.println(ime+": "+tekst);
 			try {
+				FileInputStream s = new FileInputStream("Music/PattiSmith.mp3");
+				Player player= new Player(s);
+				player.play();
+				
+			}catch(Exception e) {
+				System.out.println("greska");
+			}
+			/*try {
 				wait(delay);
 			} catch (InterruptedException e) {
 				
 				e.printStackTrace();
-			}
+			}*/
 			promena=2;
 			notifyAll();
 			}
@@ -43,14 +55,27 @@ public class Synch {
 				}
 			}
 			
-				System.out.println(ime+": "+tekst);
-				try {
+			try {
+				FileInputStream s = new FileInputStream("Music/Together.mp3");
+				Player player= new Player(s);
+				player.play();
+				
+			}catch(Exception e) {
+				System.out.println("greska");
+			}
+				/*try {
 					wait(delay);
 				} catch (InterruptedException e) {
 					
 					e.printStackTrace();
+				}*/
+				refren++;
+				if(refren==1)
+					promena=3;
+				else {
+					System.out.println("Kraj");
+					promena=1;
 				}
-				promena=3;
 				notifyAll();
 		}
 		
@@ -65,15 +90,26 @@ public class Synch {
 				}
 			}
 			
-				System.out.println(ime+": "+tekst);
+			try {
 				
-				try {
+				FileInputStream s = new FileInputStream("Music/bruceSpringsteen.mp3");
+				Player player= new Player(s);
+				player.play();
+				
+			}catch(Exception e) {
+				System.out.println("greska");
+			}
+				
+				/*try {
 					wait(delay);
 				} catch (InterruptedException e) {
 					
 					e.printStackTrace();
-				}
-				promena=1;
+				}*/
+			
+				promena=2;
+				
+			
 				
 				notifyAll();
 		}

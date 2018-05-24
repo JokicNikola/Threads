@@ -5,17 +5,42 @@ public class Pevac extends Thread {
 	private String ime;
 	private String tekst;
 	private int redniBroj;
-	private int delay;
 	private Synch synch;
-	private boolean start=true;
+	private boolean start;
 	
-	public Pevac(String ime, String tekst, int redniBroj, int delay, Synch synch) {
+	
+	
+	public Pevac(String ime, String tekst, int redniBroj, Synch synch, boolean start) {
 		super();
 		this.ime = ime;
 		this.tekst = tekst;
 		this.redniBroj = redniBroj;
-		this.delay = delay;
-		this.synch=synch;
+		this.synch = synch;
+		this.start = start;
+	}
+	
+	
+
+	public Synch getSynch() {
+		return synch;
+	}
+
+
+
+	public void setSynch(Synch synch) {
+		this.synch = synch;
+	}
+
+
+
+	public boolean isStart() {
+		return start;
+	}
+
+
+
+	public void setStart(boolean start) {
+		this.start = start;
 	}
 	
 	public String getIme() {
@@ -36,25 +61,19 @@ public class Pevac extends Thread {
 	public void setRedniBroj(int redniBroj) {
 		this.redniBroj = redniBroj;
 	}
-	public int getDelay() {
-		return delay;
-	}
-	public void setDelay(int delay) {
-		this.delay = delay;
-	}
 	
 	private synchronized void pevaj() {
 		while(start) {
 		if(this.redniBroj==1) {
-			synch.prviPeva(ime, tekst, delay);
+			synch.prviPeva(ime, tekst);
 		}else {
 			if(this.redniBroj==2) 
-				synch.drugiPeva(ime, tekst, delay);
+				synch.drugiPeva(ime, tekst);
 			else 
-				synch.treciPeva(ime, tekst, delay);
+				synch.treciPeva(ime, tekst);
 		}
 		
-		}
+	}
 	
 		
 	}

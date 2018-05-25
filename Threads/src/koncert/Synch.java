@@ -87,7 +87,7 @@ public class Synch {
 				if(refren==1)
 					promena=3;
 				else {
-					
+					refren=0;
 					promena=1;
 				}
 				notifyAll();
